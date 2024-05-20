@@ -30,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Laporan Chart</h1>
+            <h1 class="m-0">Manajemen Survey</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
            
@@ -48,7 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Laporan chart</h3>
+                <h3 class="card-title">Manajemen Survey</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -59,8 +59,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-header -->
               <div class="card-body">
                 
-              bentuk chart
-             
+                <div class="form-group">
+                    <label for="Jenis">Jenis Survey</label>
+                    <input type="text" class="form-control" id="Jenis" placeholder="Jenis">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="Kode">Kode Survey</label>
+                    <input type="text" class="form-control" id="Kode" placeholder="Kode">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Nama">Nama Survey</label>
+                    <input type="text" class="form-control" id="Nama" placeholder="Nama">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Deskripsi">Deskripsi</label>
+                    <input type="teks" class="form-control" id="Deskripsi" placeholder="Deskripsi">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Tanggal">Tanggal</label>
+                    <input type="date" class="form-control" id="Tanggal" placeholder="Tanggal">
+                  </div>
+
+                  <div class="card-footer">
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
 
               </div>
               <!-- /.card-body -->

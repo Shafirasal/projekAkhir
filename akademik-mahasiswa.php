@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <table class="table">
                                         <thead>
                                             <tr>
-
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -86,8 +86,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 die("Koneksi Gagal: " . $conn->connect_error);
                                             }
 
-                                            // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 1
-                                            $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 1";
+                                            // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 3
+                                            $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 3";
                                             $result = $conn->query($sql);
 
                                             // Tampilkan data dalam tabel HTML
@@ -123,8 +123,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             // Tutup koneksi
                                             $conn->close();
                                             ?>
-
-
                                         </tbody>
                                     </table>
 

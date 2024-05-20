@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             }
 
                                             // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 1
-                                            $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 1";
+                                            $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 2";
                                             $result = $conn->query($sql);
 
                                             // Tampilkan data dalam tabel HTML

@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">akademik</h1>
+                            <h1 class="m-0">Akademik</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
 
@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Layanan</h3>
+                                    <h3 class="card-title">akademik</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <table class="table">
                                         <thead>
                                             <tr>
-
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -86,8 +86,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 die("Koneksi Gagal: " . $conn->connect_error);
                                             }
 
-                                            // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 1
-                                            $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 1";
+                                            // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 3
+                                            $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 3";
                                             $result = $conn->query($sql);
 
                                             // Tampilkan data dalam tabel HTML
@@ -123,8 +123,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             // Tutup koneksi
                                             $conn->close();
                                             ?>
-
-
                                         </tbody>
                                     </table>
 

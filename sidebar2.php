@@ -14,7 +14,7 @@
           <img src="app/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">User</a>
+          <a href="#" class="d-block">Admin</a>
         </div>
       </div>
 
@@ -25,7 +25,7 @@
                with font-awesome or any other icon font library -->
          
           <li class="nav-item">
-            <a href="adminDash.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -33,44 +33,31 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="input.php" class="nav-link active">
+          <li class="nav-item menu-open">
+            <a href="manajemen-survey.php" class="nav-link ">
+              <i class="bi bi-pencil-square "></i>
+              <p>
+               Manajemen Survey
+              </p>
+            </a>
+            
+            <li class="nav-item">
+            <a href="manajemen-user.php" class="nav-link active">
              <i class="bi bi-pencil-square"></i>
               <p>
-                Informasi User
+               Manajemen User
               </p>
             </a>
           </li>
 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link ">
-              <i class="bi bi-pencil-square "></i>
+          <li class="nav-item">
+            <a href="chart.php" class="nav-link">
+             <i class="bi bi-pie-chart-fill"></i>
               <p>
-                Kuisioner
-                <i class="right fas fa-angle-left"></i>
+                Laporan
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="akademik.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Akademik</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="fasilitas.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fasilitas</p>
-                </a>
-              </li>
-              
-              <li class="nav-item">
-                <a href="layanan.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Layanan</p>
-                </a>
-              </li>
-            </ul>
+          </li>
 
           <li class="nav-item">
             <a href="login.html" class="nav-link">
