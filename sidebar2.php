@@ -34,7 +34,7 @@
           </li>
 
           <li class="nav-item menu-open">
-            <a href="manajemen-survey.php" class="nav-link ">
+            <a href="manajemen_survey.php" class="nav-link ">
               <i class="bi bi-pencil-square "></i>
               <p>
                Manajemen Survey
@@ -42,7 +42,7 @@
             </a>
             
             <li class="nav-item">
-            <a href="manajemen-user.php" class="nav-link active">
+            <a href="manajemen_user.php" class="nav-link active">
              <i class="bi bi-pencil-square"></i>
               <p>
                Manajemen User
@@ -60,7 +60,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a href="index.html" class="nav-link">
              <i class="bi bi-box-arrow-right"></i>
               <p>
                 Log out

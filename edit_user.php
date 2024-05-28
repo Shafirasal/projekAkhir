@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
+    $id = $_POST['user_id'];
     $username = $_POST['username'];
     $nama_lengkap = $_POST['nama_lengkap'];
     $level = $_POST['level'];

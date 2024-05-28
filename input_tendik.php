@@ -79,6 +79,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <input type="text" class="form-control" id="unit" placeholder="unit">
                   </div>
 
+                  <div class="card-footer">
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
 
               </div>
               <!-- /.card-body -->

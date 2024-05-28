@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tingkat_kepuasan']) &&
     // Loop melalui data yang diterima
     foreach ($_POST['tingkat_kepuasan'] as $soal_id => $tingkat_kepuasan) {
         // Sisipkan data ke dalam tabel t_jawaban_mahasiswa
-        $sql = "INSERT INTO t_jawaban_mahasiswa (jawaban) VALUES (?)";
+        $sql = "INSERT INTO t_jawaban_mahasiswa (responden_mahasiswa_id, soal_id, jawaban) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $tingkat_kepuasan); // Mengikat nilai jawaban sebagai string
+        $stmt->bind_param("iis", $responden_mahasiswa_id, $soal_id, $tingkat_kepuasan); // Mengikat nilai
         $stmt->execute();
     }
     echo "Data survei berhasil disimpan ke dalam tabel t_jawaban_mahasiswa.";

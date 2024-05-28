@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
+    $id = $_POST['user_id'];
 
     // Query untuk menghapus data pengguna
     $stmt = $conn->prepare("DELETE FROM users WHERE id=?");
