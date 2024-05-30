@@ -28,7 +28,7 @@
       </div>
       <div class="card-body">
 
-        <form action="conf/dbconfig.php" method="post">
+        <form method="post">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Username" name="username">
             <div class="input-group-append">
@@ -96,3 +96,7 @@
 </body>
 
 </html>
+
+<?php 
+
+?>

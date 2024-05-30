@@ -1,41 +1,65 @@
-<?php
-include 'Database.php';
+<?php 
 
-class User {
-    private $db;
+class User{
+    public $db;
+    protected $table = 'm_user';
 
-    public function __construct() {
-        $this->db = new Database();
+    public function __construct(){
+        include_once('model/koneksi.php');
+        $this->db = $db;
+        $this->db->set_charset('utf8');
     }
 
-    public function editUser($id, $username, $namaLengkap, $level) {
-        $sql = "UPDATE m_user SET username = ?, nama_lengkap = ?, level = ? WHERE user_id = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("sssi", $username, $namaLengkap, $level, $id);
+    public function insertData($data){
+        // prepare statement untuk query insert
+        $query = $this->db->prepare("insert into {$this->table} (username, nama, password) values(?,?,?)");
 
-        if ($stmt->execute()) {
-            echo "User updated successfully.";
-        } else {
-            echo "Error updating user: " . $this->db->error;
-        }
+        // binding parameter ke query, "s" berarti string, "ss" berarti dua string
+        $query->bind_param('sss', $data['username'],$data['nama'], $data['password']);
+        
+        // eksekusi query untuk menyimpan ke database
+        $query->execute();
     }
 
-    public function deleteUser($id) {
-        $sql = "DELETE FROM m_user WHERE user_id = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("i", $id);
-
-        if ($stmt->execute()) {
-            echo "User deleted successfully.";
-        } else {
-            echo "Error deleting user: " . $this->db->error;
-        }
+    public function getData(){
+        // query untuk mengambil data dari tabel bank_soal
+        return $this->db->query("select * from {$this->table} ");
     }
 
-    public function getUsers() {
-        $sql = "SELECT user_id, username, nama_lengkap, level FROM m_user";
-        $result = $this->db->query($sql);
-        return $result;
+    public function getDataById($id){
+
+        // query untuk mengambil data berdasarkan id
+        $query = $this->db->prepare("select * from {$this->table} where user_id = ?");
+        
+        // binding parameter ke query "i" berarti integer. Biar tidak kena SQL Injection
+        $query->bind_param('i', $id);
+
+        // eksekusi query
+        $query->execute();
+
+        // ambil hasil query
+        return $query->get_result();
+    }
+
+    public function updateData($id, $data){
+        // query untuk update data
+        $query = $this->db->prepare("update {$this->table} set username = ?, nama = ?, password = ? where id = ?");
+
+        // binding parameter ke query
+        $query->bind_param('sssi', $data['username'], $data['nama'], $data['password'], $id);
+
+        // eksekusi query
+        $query->execute();
+    }
+
+    public function deleteData($id){
+        // query untuk delete data
+        $query = $this->db->prepare("delete from {$this->table} where user_id = ?");
+
+        // binding parameter ke query
+        $query->bind_param('i', $id);
+
+        // eksekusi query
+        $query->execute();
     }
 }
-?>
