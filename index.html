@@ -38,16 +38,6 @@
             </div>
           </div>
 
-          <form action="conf/dbconfig.php" method="post">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Nama" name="nama">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-            </div>
-
           <div class="input-group mb-3">
             <input type="password" class="form-control" placeholder="Password" name="password">
             <div class="input-group-append">
@@ -60,20 +50,17 @@
             <div class="col-8">
               <div class="icheck-primary">
                 
-                <div class="dropdown">
-                  <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Login sebagai
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="manajemen_user.php">Admin</a></li>
-                    <li><a class="dropdown-item" href="input_dosen.php">Dosen</a></li>
-                    <li><a class="dropdown-item" href="input_tendik.php">Tendik</a></li>
-                    <li><a class="dropdown-item" href="input_mahasiswa.php">Mahasiswa</a></li>
-                    <li><a class="dropdown-item" href="input_alumni.php">Alumni</a></li>
-                    <li><a class="dropdown-item" href="input_ortu.php">Orang Tua</a></li>
-                    <li><a class="dropdown-item" href="input_industri.php">Industri</a></li>
-                  </ul>
-                </div>
+                
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Login Sebagai</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Dosen">Dosen</option>
+                  <option value="Tendik">Tendik</option>
+                  <option value="Mahasiswa">Mahasiswa</option>
+                  <option value="Alumni">Alumni</option>
+                  <option value="Orang Tua">Orang Tua</option>
+                  <option value="Industri">Industri</option>
+                </select>
 
               </div>
             </div>

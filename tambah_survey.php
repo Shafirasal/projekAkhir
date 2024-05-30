@@ -15,15 +15,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="app/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
 <?php include "navbar.php"; ?> 
 
-<?php include "sidebar.php"; ?>
+<?php include "sidebar2.php"; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -32,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Home</h1>
+            <h1 class="m-0">Manajemen Survey</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
            
@@ -47,8 +45,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
           
-          
-        <img src="app/dist/img/polinema.png" alt="">
+        <div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Tambah Survey</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                
+                <div class="form-group">
+                    <label for="Jenis">Jenis Survey</label>
+                    <input type="text" class="form-control" id="Jenis" placeholder="Jenis">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="Kode">Kode Survey</label>
+                    <input type="text" class="form-control" id="Kode" placeholder="Kode">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Nama">Nama Survey</label>
+                    <input type="text" class="form-control" id="Nama" placeholder="Nama">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Deskripsi">Deskripsi</label>
+                    <input type="teks" class="form-control" id="Deskripsi" placeholder="Deskripsi">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Tanggal">Tanggal</label>
+                    <input type="date" class="form-control" id="Tanggal" placeholder="Tanggal">
+                  </div>
+
+                  <div class="card-footer">
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
 
 
 

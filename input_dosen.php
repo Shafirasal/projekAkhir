@@ -85,7 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div>
 
                   <div class="card-footer">
-                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="submit" class="btn btn-success">aSubmit</button>
                 </div>
 
               </div>

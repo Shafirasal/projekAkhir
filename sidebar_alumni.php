@@ -14,7 +14,7 @@
           <img src="app/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">User</a>
         </div>
       </div>
 
@@ -33,34 +33,35 @@
             </a>
           </li>
 
-          <li class="nav-item menu-open">
-            <a href="manajemen_survey_kategori.php" class="nav-link ">
-              <i class="bi bi-pencil-square "></i>
-              <p>
-               Manajemen Survey
-              </p>
-            </a>
-            
-            <li class="nav-item">
-            <a href="manajemen_user.php" class="nav-link active">
+          <li class="nav-item">
+            <a href="input.php" class="nav-link active">
              <i class="bi bi-pencil-square"></i>
               <p>
-               Manajemen User
+                Informasi User
               </p>
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="chart.php" class="nav-link">
-             <i class="bi bi-pie-chart-fill"></i>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link ">
+              <i class="bi bi-pencil-square "></i>
               <p>
-                Laporan
+                Kuisioner
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="kualitas_alumni.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kualitas Alumni</p>
+                </a>
+              </li>
+
+            </ul>
 
           <li class="nav-item">
-            <a href="index.html" class="nav-link">
+            <a href="login.html" class="nav-link">
              <i class="bi bi-box-arrow-right"></i>
               <p>
                 Log out

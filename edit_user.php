@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $level = $_POST['level'];
 
     // Query untuk update data pengguna
-    $stmt = $conn->prepare("UPDATE users SET username=?, nama_lengkap=?, level=? WHERE id=?");
+    $stmt = $conn->prepare("UPDATE m_user SET username=?, nama_lengkap=?, level=? WHERE id=$id");
     $stmt->bind_param("sssi", $username, $nama_lengkap, $level, $id);
 
     if ($stmt->execute()) {

@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Manajemen User</h1>
+                            <h1 class="m-0">Manajemen Survey</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
 
@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Manajemen User</h3>
+                                    <h3 class="card-title">Kategori Survey Lulusan</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -63,6 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
+                                <form method="post" action="delete_user.php">
                                     <div class="card-body" bis_skin_checked="1">
                                         <table class="table table-bordered">
                                             <thead>
@@ -83,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </tbody>
                                         </table>
                                     </div>
-
+                                </form>
 
                                 </div>
                                 <!-- /.card-body -->

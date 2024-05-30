@@ -17,6 +17,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="app/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
+    <style>
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a :hover {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -33,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Manajemen User</h1>
+                            <h1 class="m-0">Manajemen Survey</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
 
@@ -51,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Manajemen User</h3>
+                                    <h3 class="card-title">Tambah Survey</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -63,65 +75,86 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <div class="card-body" bis_skin_checked="1">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>No.</th>
-                                                    <th>Jenis Survey</th>
-                                                    <th>Nama Survey</th>
-                                                    <th>aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1.</td>
-                                                    <td>Mahasiswa</td>
-                                                    <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Kategori Survey</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2.</td>
-                                                    <td>Dosen</td>
-                                                    <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Kategori Survey</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
-                                                </tr><tr>
-                                                    <td>3.</td>
-                                                    <td>Orang Tua</td>
-                                                    <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Kategori Survey</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
-                                                </tr><tr>
-                                                    <td>4.</td>
-                                                    <td>Tendik</td>
-                                                    <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Kategori Survey</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
-                                                </tr><tr>
-                                                    <td>5.</td>
-                                                    <td>Alumni</td>
-                                                    <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Kategori Survey</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
-                                                </tr><tr>
-                                                    <td>6.</td>
-                                                    <td>Industri</td>
-                                                    <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Kategori Survey</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <form method="post" action="delete_user.php">
+                                        <div class="card-body" bis_skin_checked="1">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Jenis Survey</th>
+                                                        <th>Nama Survey</th>
+                                                        <th>aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1.</td>
+                                                        <td>Mahasiswa</td>
+                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-success">Kategori
+                                                                Survey</button>
+                                                            <button type="submit" class="btn btn-danger">hapus</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.</td>
+                                                        <td>Dosen</td>
+                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-success">Kategori
+                                                                Survey</button>
+                                                            <button type="submit" class="btn btn-danger">hapus</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.</td>
+                                                        <td>Orang Tua</td>
+                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-success">Kategori
+                                                                Survey</button>
+                                                            <button type="submit" class="btn btn-danger">hapus</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.</td>
+                                                        <td>Tendik</td>
+                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-success">Kategori
+                                                                Survey</button>
+                                                            <button type="submit" class="btn btn-danger">hapus</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5.</td>
+                                                        <td>Alumni</td>
+                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-success">Kategori
+                                                                Survey</button>
+                                                            <button type="submit" class="btn btn-danger">hapus</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6.</td>
+                                                        <td>Industri</td>
+                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-success">Kategori
+                                                                Survey</button>
+                                                            <button type="submit" class="btn btn-danger">hapus</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </form>
 
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary"><a href="tambah_survey.php">Tambah Survey</a></button>
+                                    </div>
 
                                 </div>
                                 <!-- /.card-body -->

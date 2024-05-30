@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <?php include "navbar.php"; ?> 
 
-<?php include "sidebar.php"; ?>
+<?php include "sidebar_industri.php"; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -48,7 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row">
           
           
-        <img src="app/dist/img/polinema.png" alt="">
+        ini adalah isi dari Home
 
 
 

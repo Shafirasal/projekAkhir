@@ -65,9 +65,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="card-body" bis_skin_checked="1">
                                         <div class="form-group" bis_skin_checked="1">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter email">
+                                            <label for="exampleInputEmail1">Username</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                placeholder="Username">
                                         </div>
                                         <div class="form-group" bis_skin_checked="1">
                                             <label for="exampleInputPassword1">Password</label>

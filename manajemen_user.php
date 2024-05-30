@@ -7,11 +7,24 @@
     <title>Survey kepuasan pelanggan Polinema</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="app/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
+    <style>
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a :hover {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -44,7 +57,8 @@
                                 <div class="card-header">
                                     <h3 class="card-title">Manajemen User</h3>
                                     <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                                class="fas fa-minus"></i></button>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
@@ -65,7 +79,7 @@
                                     }
 
                                     // Query untuk mengambil data dari tabel users
-                                    $sql = "SELECT user_id, username, nama_lengkap, level FROM m_user";
+                                    $sql = "SELECT user_id, username, nama_lengkap, password, level FROM m_user";
                                     $result = $conn->query($sql);
 
                                     // Tampilkan data dalam tabel HTML
@@ -76,6 +90,7 @@
                                         echo "<th>No</th>";
                                         echo "<th>Username</th>";
                                         echo "<th>Nama Lengkap</th>";
+                                        echo "<th>Password</th>";
                                         echo "<th>Level</th>";
                                         echo "<th>Aksi</th>";
                                         echo "</tr>";
@@ -87,6 +102,7 @@
                                             echo "<td>" . $no++ . "</td>";
                                             echo "<td>" . htmlspecialchars($row['username']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['nama_lengkap']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['password']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['level']) . "</td>";
                                             echo "<td>";
                                             echo "<button class='btn btn-success' onclick='editUser(" . $row['user_id'] . ")'>Edit</button> ";
@@ -103,6 +119,10 @@
                                     // Tutup koneksi
                                     $conn->close();
                                     ?>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary"><a href="admin_tambah.php">Tambah User</a></button>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -142,24 +162,26 @@
         function editUser(id) {
             let username = prompt("Enter new username:");
             let nama_lengkap = prompt("Enter new nama lengkap:");
+            let password = prompt("Enter new password:");
             let level = prompt("Enter new level:");
 
-            if (username && nama_lengkap && level) {
+            if (username && nama_lengkap && level && password) {
                 let formData = new FormData();
                 formData.append('id', id);
                 formData.append('username', username);
                 formData.append('nama_lengkap', nama_lengkap);
                 formData.append('level', level);
+                formData.append('password', password);
 
                 fetch('edit_user.php', {
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data);
-                    location.reload();
-                });
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        location.reload();
+                    });
             }
         }
 
@@ -172,13 +194,14 @@
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data);
-                    location.reload();
-                });
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        location.reload();
+                    });
             }
         }
     </script>
 </body>
+
 </html>
