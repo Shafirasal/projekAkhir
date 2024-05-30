@@ -49,16 +49,14 @@
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
-                
-                
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="user_type">
                   <option selected>Login Sebagai</option>
                   <option value="Admin">Admin</option>
                   <option value="Dosen">Dosen</option>
                   <option value="Tendik">Tendik</option>
                   <option value="Mahasiswa">Mahasiswa</option>
                   <option value="Alumni">Alumni</option>
-                  <option value="Orang Tua">Orang Tua</option>
+                  <option value="Ortu">Ortu</option>
                   <option value="Industri">Industri</option>
                 </select>
 
@@ -74,10 +72,10 @@
 
         <!-- /.social-auth-links -->
         <p class="mb-1">
-          <a href="forgot-password.html">I forgot my password</a>
+          <a href="forgot-password.php">I forgot my password</a>
         </p>
         <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new account</a>
+          <a href="register.php" class="text-center">Register a new account</a>
         </p>
       </div>
       <!-- /.card-body -->
@@ -97,6 +95,96 @@
 
 </html>
 
-<?php 
+<?php
+session_start();
+$servername = "localhost";
+$username_db = "root";
+$password_db = "";
+$database = "projek_akhir";
 
+// Buat koneksi
+$conn = new mysqli($servername, $username_db, $password_db, $database);
+
+// Periksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mendapatkan data yang dikirimkan dari JavaScript
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+    $user_status = isset($_POST['user_type']) ? $_POST['user_type'] : '';
+
+    if(empty($username) || empty($password) || empty($user_status)) {
+        echo "Please fill in all fields.";
+        exit;
+    }
+
+    $user_status = str_replace('-', ' ', $user_status);
+
+    // Melindungi dari SQL Injection
+    $username = mysqli_real_escape_string($conn, $username);
+    $password = mysqli_real_escape_string($conn, $password);
+    $user_status = mysqli_real_escape_string($conn, $user_status);
+
+    // Mencari pengguna dengan username tertentu di database
+    $sql = "SELECT * FROM m_user WHERE username = '$username' AND level = '$user_status'";
+    $result = $conn->query($sql);
+
+    // Periksa apakah username dan password cocok
+    if ($result->num_rows > 0) {
+        // Pengguna ditemukan, ambil data dari database
+        $row = $result->fetch_assoc();
+        
+        // Periksa apakah password yang dimasukkan sesuai dengan password di database
+        if ($password === $row['password']) {
+            // Password cocok, login berhasil
+
+            // Check if the user belongs to the correct user type
+            session_start(); // Memulai sesi
+            $_SESSION['username'] = $username; // Simpan username ke sesi
+            $_SESSION['user_type'] = $user_status; // Simpan user_status ke sesi
+            $_SESSION['nama'] = $row['nama']; // simpan nama user ke sesi
+            $_SESSION['user_id'] = $row['user_id']; // simpan user_id ke sesi
+            
+            switch ($user_status) {
+                case 'Mahasiswa':
+                    header("Location: dashboard.php");
+                    break;
+                case 'Dosen':
+                    header("Location: dashboard_dosen.php");
+                    break;
+                case 'Admin':
+                    header("Location: adminDash.php");
+                    break;
+                case 'Ortu':
+                    header("Location: dashboard_ortu.php");
+                    break;
+                case 'Alumni':
+                    header("Location: dashboard_alumni.php");
+                    break;
+                case 'Industri':
+                    header("Location: dashboard_industri.php");
+                    break;
+                case 'Tendik':
+                    header("Location: dashboard_tendik.php");
+                    break;
+                default:
+                    echo "user_not_found";
+                    break;
+            }
+            exit();
+        } else {
+            // Password salah
+            echo "wrong_password";
+        }
+    } else {
+        // Pengguna tidak ditemukan
+        echo "user_not_found";
+    }
+}
+
+$conn->close();
 ?>

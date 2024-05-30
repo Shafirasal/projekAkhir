@@ -14,7 +14,7 @@
           <img src="app/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">User</a>
+        <p class = "d-block text-white"><b><?= $_SESSION['nama'] ?></b></p> 
         </div>
       </div>
 
@@ -34,7 +34,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="input.php" class="nav-link active">
+            <a href="input_alumni.php" class="nav-link active">
              <i class="bi bi-pencil-square"></i>
               <p>
                 Informasi User
@@ -61,7 +61,7 @@
             </ul>
 
           <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a href="logout.php" class="nav-link">
              <i class="bi bi-box-arrow-right"></i>
               <p>
                 Log out

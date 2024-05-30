@@ -50,10 +50,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row">
 
-            <div class="col-md-12">
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Home</h3>
+          
+          <img src="app/dist/img/bg.jpg" alt="">
 
                 </div>
                 <!-- /.card-body -->

@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+
+$servername = "localhost";
+$username_db = "root";
+$password_db = "";
+$database = "projek_akhir";
+
+$conn = new mysqli($servername, $username_db, $password_db, $database);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -47,9 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
           
-          
-        ini adalah isi dari Home
-
+        <img src="app/dist/img/bg.jpg" alt="">
 
 
         </div>

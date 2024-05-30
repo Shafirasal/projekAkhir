@@ -14,9 +14,10 @@
           <img src="app/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">User</a>
+        <p class = "d-block text-white"><b><?= $_SESSION['nama'] ?></b></p> 
+          </div>
         </div>
-      </div>
+      
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -25,7 +26,7 @@
                with font-awesome or any other icon font library -->
          
           <li class="nav-item">
-            <a href="adminDash.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -73,7 +74,7 @@
             </ul>
 
           <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a href="logout.php" class="nav-link">
              <i class="bi bi-box-arrow-right"></i>
               <p>
                 Log out

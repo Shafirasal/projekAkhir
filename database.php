@@ -4,7 +4,7 @@ class Database
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $database = "prakwebdb";
+    private $database = "projek_akhir";
     public $conn;
 
     public function __construct()

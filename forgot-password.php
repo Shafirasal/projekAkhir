@@ -22,7 +22,7 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-      <form action="recover-password.html" method="post">
+      <form action="recover-password.php" method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
@@ -39,7 +39,7 @@
         </div>
       </form>
       <p class="mt-3 mb-1">
-        <a href="index.html">Login</a>
+        <a href="index.php">Login</a>
       </p>
     </div>
     <!-- /.login-card-body -->
