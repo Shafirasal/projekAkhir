@@ -86,8 +86,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div>
                 
                   <div class="form-group">
-                    <label for="Nomer">Nomer Hp</label>
-                    <input type="number" class="form-control" id="Nomer" placeholder="Nomer">
+                    <label for="Nomor">Nomor Hp</label>
+                    <input type="number" class="form-control" id="Nomor" placeholder="Nomor">
                   </div>
 
 

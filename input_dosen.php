@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Survey kepuasan pelanggan Polinema</title>
+  <title>Survey Kepuasan Pelanggan Polinema</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -20,7 +16,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
 <?php include "navbar.php"; ?> 
-
 <?php include "sidebar_ortu.php"; ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -33,7 +28,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1 class="m-0">Informasi User</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-           
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -49,7 +43,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Informasi User</h3>
-
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                   </button>
@@ -59,42 +52,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-header -->
               <div class="card-body">
                 
-                <div class="form-group">
+                <form action="submit_data_dosen.php" method="POST">
+                  <div class="form-group">
                     <label for="Tanggal">Tanggal</label>
-                    <input type="date" class="form-control" id="Tanggal" placeholder="Tanggal">
+                    <input type="date" class="form-control" name="Tanggal" id="Tanggal" placeholder="Tanggal">
                   </div>
                   
                   <div class="form-group">
                     <label for="NIP">NIP</label>
-                    <input type="number" class="form-control" id="NIP" placeholder="NIP">
+                    <input type="number" class="form-control" name="NIP" id="NIP" placeholder="NIP">
                   </div>
 
                   <div class="form-group">
                     <label for="Nama">Nama</label>
-                    <input type="text" class="form-control" id="Nama" placeholder="Nama">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="prodi">prodi</label>
-                    <input type="text" class="form-control" id="prodi" placeholder="prodi">
+                    <input type="text" class="form-control" name="Nama" id="Nama" placeholder="Nama">
                   </div>
 
                   <div class="form-group">
                     <label for="unit">unit</label>
-                    <input type="text" class="form-control" id="unit" placeholder="unit">
+                    <input type="text" class="form-control" name="unit" id="unit" placeholder="unit">
                   </div>
 
                   <div class="card-footer">
-                  <button type="submit" class="btn btn-success">aSubmit</button>
-                </div>
-
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                </form>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-
-
 
         </div>
         <!-- /.row -->

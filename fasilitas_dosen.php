@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 
 <head>
@@ -33,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">akademik</h1>
+                            <h1 class="m-0">Fasilitas</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
 
@@ -51,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Layanan</h3>
+                                    <h3 class="card-title">Fasilitas</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -63,70 +59,70 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
+                                    <form method="post" action="submit_fasilitas_dosen.php">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                            <?php
-                                            // Koneksi ke database
-                                            $servername = "localhost";
-                                            $username = "root";
-                                            $password = "";
-                                            $dbname = "projek_akhir";
+                                                <?php
+                                                // Koneksi ke database
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $dbname = "projek_akhir";
 
-                                            // Buat koneksi
-                                            $conn = new mysqli($servername, $username, $password, $dbname);
+                                                // Buat koneksi
+                                                $conn = new mysqli($servername, $username, $password, $dbname);
 
-                                            // Periksa koneksi
-                                            if ($conn->connect_error) {
-                                                die("Koneksi Gagal: " . $conn->connect_error);
-                                            }
-
-                                            // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 1
-                                            $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 4";
-                                            $result = $conn->query($sql);
-
-                                            // Tampilkan data dalam tabel HTML
-                                            if ($result->num_rows > 0) {
-                                                echo "<form method='post' action='submit_survey.php'>"; // Form untuk submit survey
-                                                echo "<table class='table table-striped'>";
-                                                echo "<thead class='judul-table'>";
-                                                echo "<tr>";
-                                                echo "<th scope='col'>Soal</th>";
-                                                echo "<th scope='col'>Tingkat Kepuasan</th>";
-                                                echo "</tr>";
-                                                echo "</thead>";
-                                                echo "<tbody>";
-                                                while ($row = $result->fetch_assoc()) {
-                                                    echo "<tr>";
-                                                    echo "<td>" . $row['soal_nama'] . "</td>";
-                                                    echo "<td>";
-                                                    // Buat radio button untuk setiap tingkat kepuasan
-                                                    for ($i = 1; $i <= 4; $i++) {
-                                                        echo "<label><input type='radio' name='tingkat_kepuasan[" . $row['soal_id'] . "]' value='$i'>$i</label>";
-                                                    }
-                                                    echo "</td>";
-                                                    echo "</tr>";
+                                                // Periksa koneksi
+                                                if ($conn->connect_error) {
+                                                    die("Koneksi Gagal: " . $conn->connect_error);
                                                 }
-                                                echo "</tbody>";
-                                                echo "</table>";
-                                                echo "<button type='submit' class='btn btn-primary'>Submit</button>"; // Tombol submit
-                                                echo "</form>";
-                                            } else {
-                                                echo "Tidak ada data.";
-                                            }
 
-                                            // Tutup koneksi
-                                            $conn->close();
-                                            ?>
+                                                // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 4
+                                                $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 4";
+                                                $result = $conn->query($sql);
+
+                                                // Tampilkan data dalam tabel HTML
+                                                if ($result->num_rows > 0) {
+                                                    echo "<table class='table table-striped'>";
+                                                    echo "<thead class='judul-table'>";
+                                                    echo "<tr>";
+                                                    echo "<th scope='col'>Soal</th>";
+                                                    echo "<th scope='col'>Tingkat Kepuasan</th>";
+                                                    echo "</tr>";
+                                                    echo "</thead>";
+                                                    echo "<tbody>";
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "<tr>";
+                                                        echo "<td>" . $row['soal_nama'] . "</td>";
+                                                        echo "<td>";
+                                                        // Buat radio button untuk setiap tingkat kepuasan
+                                                        for ($i = 1; $i <= 4; $i++) {
+                                                            echo "<label><input type='radio' name='tingkat_kepuasan[" . $row['soal_id'] . "]' value='$i'>$i</label>";
+                                                        }
+                                                        echo "</td>";
+                                                        echo "</tr>";
+                                                    }
+                                                    echo "</tbody>";
+                                                    echo "</table>";
+                                                    echo "<button type='submit' class='btn btn-primary'>Submit</button>"; // Tombol submit
+                                                } else {
+                                                    echo "Tidak ada data.";
+                                                }
+
+                                                // Tutup koneksi
+                                                $conn->close();
+                                                ?>
 
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </form>
 
 
                                 </div>
@@ -151,23 +147,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="p-3">
                 <h5>Title</h5>
                 <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <?php include "footer.php"; ?>
-
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
-
-    <!-- jQuery -->
-    <script src="app/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="app/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="app/dist/js/adminlte.min.js"></script>
-</body>
-
-</html>
+            </

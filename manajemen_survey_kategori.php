@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 
 <head>
@@ -23,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             text-decoration: none;
         }
 
-        a :hover {
+        a: hover {
             color: white;
             text-decoration: none;
             cursor: pointer;
@@ -63,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Tambah Survey</h3>
+                                    <h3 class="card-title">Manajemen Survey</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -75,85 +71,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <form method="post" action="delete_user.php">
-                                        <div class="card-body" bis_skin_checked="1">
-                                            <table class="table table-bordered">
-                                                <thead>
+                                    <div class="card-body" bis_skin_checked="1">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Jenis Survey</th>
+                                                    <th>Nama Survey</th>
+                                                    <th>aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                // Koneksi ke database
+                                                $koneksi = mysqli_connect("localhost", "root", "", "projek_akhir");
+
+                                                // Periksa koneksi
+                                                if (mysqli_connect_error()) {
+                                                    echo "Koneksi database gagal: " . mysqli_connect_error();
+                                                    exit();
+                                                }
+
+                                                // Query untuk mengambil data survey
+                                                $query = "SELECT survey_jenis, survey_nama FROM m_survey";
+                                                $result = mysqli_query($koneksi, $query);
+
+
+                                                $no = 1;
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    ?>
                                                     <tr>
-                                                        <th>No.</th>
-                                                        <th>Jenis Survey</th>
-                                                        <th>Nama Survey</th>
-                                                        <th>aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1.</td>
-                                                        <td>Mahasiswa</td>
-                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
+                                                        <td><?php echo $no++; ?></td>
+                                                        <td><?php echo $row['survey_jenis']; ?></td>
+                                                        <td><?php echo $row['survey_nama']; ?></td>
                                                         <td>
                                                             <button type="submit" class="btn btn-success">Kategori
                                                                 Survey</button>
                                                             <button type="submit" class="btn btn-danger">hapus</button>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>2.</td>
-                                                        <td>Dosen</td>
-                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                        <td>
-                                                            <button type="submit" class="btn btn-success">Kategori
-                                                                Survey</button>
-                                                            <button type="submit" class="btn btn-danger">hapus</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.</td>
-                                                        <td>Orang Tua</td>
-                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                        <td>
-                                                            <button type="submit" class="btn btn-success">Kategori
-                                                                Survey</button>
-                                                            <button type="submit" class="btn btn-danger">hapus</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.</td>
-                                                        <td>Tendik</td>
-                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                        <td>
-                                                            <button type="submit" class="btn btn-success">Kategori
-                                                                Survey</button>
-                                                            <button type="submit" class="btn btn-danger">hapus</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5.</td>
-                                                        <td>Alumni</td>
-                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                        <td>
-                                                            <button type="submit" class="btn btn-success">Kategori
-                                                                Survey</button>
-                                                            <button type="submit" class="btn btn-danger">hapus</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>6.</td>
-                                                        <td>Industri</td>
-                                                        <td>Survey Kepuasan Pelanggan Polinema</td>
-                                                        <td>
-                                                            <button type="submit" class="btn btn-success">Kategori
-                                                                Survey</button>
-                                                            <button type="submit" class="btn btn-danger">hapus</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </form>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary"><a href="tambah_survey.php">Tambah Survey</a></button>
+                                        <button type="submit" class="btn btn-primary"><a href="tambah_survey.php">Tambah
+                                                Survey</a></button>
                                     </div>
 
                                 </div>
@@ -198,3 +162,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </body>
 
 </html>
+
+<?php
+// Tutup koneksi
+mysqli_close($koneksi);
+?>

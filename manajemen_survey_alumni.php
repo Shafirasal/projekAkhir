@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                    <div class="card-body" bis_skin_checked="1">
+                                   <div class="card-body" bis_skin_checked="1">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     $sql = "SELECT DISTINCT m_kategori.kategori_nama
                                                             FROM m_survey_soal 
                                                             JOIN m_kategori ON m_survey_soal.kategori_id = m_kategori.kategori_id 
-                                                            WHERE m_survey_soal.kategori_id IN (10)";
+                                                            WHERE m_survey_soal.kategori_id IN (11)";
                                                     $result = $conn->query($sql);
 
                                                     if ($result->num_rows > 0) {
@@ -111,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </tbody>
                                         </table>
                                     </div>
-
+                                
                                 </div>
                                 <!-- /.card-body -->
                             </div>

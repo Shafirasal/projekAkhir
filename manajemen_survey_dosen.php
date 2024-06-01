@@ -63,7 +63,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <div class="card-body">
 
-                                <form method="post" action="delete_user.php">
                                     <div class="card-body" bis_skin_checked="1">
                                         <table class="table table-bordered">
                                             <thead>
@@ -74,25 +73,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1.</td>
-                                                    <td>Fasilitas</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Tambah Soal</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2.</td>
-                                                    <td>Kurikulum</td>
-                                                    <td>
-                                    <button type="submit" class="btn btn-success">Tambah Soal</button>
-                                    <button type="submit" class="btn btn-danger">hapus</button></td>
+                                            <?php
+                                                    // Database connection
+                                                    $conn = new mysqli('localhost', 'root', '', 'projek_akhir');
+
+                                                    // Check connection
+                                                    if ($conn->connect_error) {
+                                                        die("Connection failed: " . $conn->connect_error);
+                                                    }
+
+                                                    // Modified SQL query to select distinct category names
+                                                    $sql = "SELECT DISTINCT m_kategori.kategori_nama
+                                                            FROM m_survey_soal 
+                                                            JOIN m_kategori ON m_survey_soal.kategori_id = m_kategori.kategori_id 
+                                                            WHERE m_survey_soal.kategori_id IN (4,5)";
+                                                    $result = $conn->query($sql);
+
+                                                    if ($result->num_rows > 0) {
+                                                        $no = 1;
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            echo "<tr>";
+                                                            echo "<td>" . $no++ . ".</td>";
+                                                            echo "<td>" . htmlspecialchars($row['kategori_nama']) . "</td>";
+                                                            echo '<td>
+                                                                <button type="button" class="btn btn-success">Tambah Soal</button>
+                                                                <button type="button" class="btn btn-danger">hapus</button>
+                                                              </td>';
+                                                            echo "</tr>";
+                                                        }
+                                                    } else {
+                                                        echo "<tr><td colspan='3'>No data available</td></tr>";
+                                                    }
+
+                                                    $conn->close();
+                                                    ?>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                </form>
-
+                                
                                 </div>
                                 <!-- /.card-body -->
                             </div>

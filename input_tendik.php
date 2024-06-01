@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -31,14 +27,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">Informasi User</h1>
-          </div><!-- /.col -->
+          </div>
           <div class="col-sm-6">
-           
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
@@ -49,78 +43,63 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Informasi User</h3>
-
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                   </button>
                 </div>
-                <!-- /.card-tools -->
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
-                
-                <div class="form-group">
+                <!-- Form mulai di sini -->
+                <form action="submit_data_tendik.php" method="POST">
+                  <div class="form-group">
                     <label for="Tanggal">Tanggal</label>
-                    <input type="date" class="form-control" id="Tanggal" placeholder="Tanggal">
+                    <input type="date" class="form-control" name="Tanggal" id="Tanggal" placeholder="Tanggal">
                   </div>
                   
                   <div class="form-group">
                     <label for="No">No pegawai</label>
-                    <input type="number" class="form-control" id="No" placeholder="No">
+                    <input type="number" class="form-control" name="No" id="No" placeholder="No">
                   </div>
 
                   <div class="form-group">
                     <label for="Nama">Nama</label>
-                    <input type="text" class="form-control" id="Nama" placeholder="Nama">
+                    <input type="text" class="form-control" name="Nama" id="Nama" placeholder="Nama">
                   </div>
 
                   <div class="form-group">
-                    <label for="unit">unit</label>
-                    <input type="text" class="form-control" id="unit" placeholder="unit">
+                    <label for="unit">Unit</label>
+                    <input type="text" class="form-control" name="unit" id="unit" placeholder="Unit">
                   </div>
 
                   <div class="card-footer">
-                  <button type="submit" class="btn btn-success">Submit</button>
-                </div>
-
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+                <!-- Form selesai di sini -->
               </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
           </div>
 
-
-
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
     </div>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
     <div class="p-3">
       <h5>Title</h5>
       <p>Sidebar content</p>
     </div>
   </aside>
-  <!-- /.control-sidebar -->
 
  <?php include "footer.php"; ?>
 
 </div>
-<!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
 <script src="app/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="app/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
 <script src="app/dist/js/adminlte.min.js"></script>
 </body>
 </html>

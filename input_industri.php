@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Survey kepuasan pelanggan Polinema</title>
+  <title>Survey Kepuasan Pelanggan Polinema</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -20,7 +16,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
 <?php include "navbar.php"; ?> 
-
 <?php include "sidebar_industri.php"; ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -33,7 +28,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1 class="m-0">Informasi User</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-           
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -59,44 +53,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-header -->
               <div class="card-body">
                 
-                <div class="form-group">
+                <form action="submit_data_industri.php" method="POST">
+                  <div class="form-group">
                     <label for="Tanggal">Tanggal</label>
-                    <input type="date" class="form-control" id="Tanggal" placeholder="Tanggal">
+                    <input type="date" class="form-control" name="Tanggal" id="Tanggal" placeholder="Tanggal">
                   </div>
 
                   <div class="form-group">
                     <label for="Nama">Nama</label>
-                    <input type="text" class="form-control" id="Nama" placeholder="Nama">
+                    <input type="text" class="form-control" name="Nama" id="Nama" placeholder="Nama">
                   </div>
 
                   <div class="form-group">
                     <label for="Jabatan">Jabatan</label>
-                    <input type="text" class="form-control" id="Jabatan" placeholder="Jabatan">
+                    <input type="text" class="form-control" name="Jabatan" id="Jabatan" placeholder="Jabatan">
                   </div>
 
                   <div class="form-group">
                     <label for="Perusahaan">Perusahaan</label>
-                    <input type="text" class="form-control" id="Perusahaan" placeholder="Perusahaan">
+                    <input type="text" class="form-control" name="Perusahaan" id="Perusahaan" placeholder="Perusahaan">
                   </div>
 
                   <div class="form-group">
                     <label for="Email">Email</label>
-                    <input type="email" class="form-control" id="Email" placeholder="Email">
+                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
                   </div>
                 
                   <div class="form-group">
-                    <label for="Nomer">Nomer Hp</label>
-                    <input type="number" class="form-control" id="Nomer" placeholder="Nomer">
+                    <label for="Nomer">Nomor HP</label>
+                    <input type="number" class="form-control" name="Nomer" id="Nomer" placeholder="Nomor HP">
                   </div>
 
                   <div class="form-group">
                     <label for="Kota">Kota</label>
-                    <input type="text" class="form-control" id="Kota" placeholder="Kota">
+                    <input type="text" class="form-control" name="Kota" id="Kota" placeholder="Kota">
                   </div>
 
                   <div class="card-footer">
-                  <button type="submit" class="btn btn-success">Submit</button>
-                </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                </form>
 
               </div>
               <!-- /.card-body -->
@@ -104,15 +100,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.card -->
           </div>
 
-
-
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div><!-- /.content -->
+  </div><!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

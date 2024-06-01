@@ -31,6 +31,7 @@
     <div class="wrapper">
 
         <?php include "navbar.php"; ?>
+        
         <?php include "sidebar2.php"; ?>
 
         <!-- Content Wrapper. Contains page content -->
@@ -64,6 +65,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
+                                    
                                     <?php
                                     $servername = "localhost";
                                     $username = "root";

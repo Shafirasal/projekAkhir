@@ -1,3 +1,10 @@
+<?php
+require_once 'crud_manajemen_user.php';
+
+$Crud = new Crud();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,18 +31,6 @@
 
       <?php
       session_start();
-      $servername = "localhost";
-      $username_db = "root";
-      $password_db = "";
-      $database = "projek_akhir";
-
-      // Create connection
-      $conn = new mysqli($servername, $username_db, $password_db, $database);
-
-      // Check connection
-      if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-      }
 
       // Check if form is submitted
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -47,6 +42,8 @@
           $namaLengkap = trim($_POST['nama_lengkap']);
           $terms = isset($_POST['terms']) ? $_POST['terms'] : '';
 
+          
+
           // Basic validation
           if (empty($username) || empty($email) || empty($nama) || empty($password) || empty($level) || empty($namaLengkap) || $terms != 'agree') {
               echo "<div class='alert alert-danger'>Please fill in all fields and agree to the terms.</div>";
@@ -57,21 +54,16 @@
               } else {
               
                   // Check if username or email already exists
-                  $sql = "SELECT * FROM m_user WHERE username = ? OR email = ?";
-                  $stmt = $conn->prepare($sql);
-                  $stmt->bind_param("ss", $username, $email);
-                  $stmt->execute();
-                  $result = $stmt->get_result();
+                  
+                  $result = $Crud->readByUsername($username, $email);
 
-                  if ($result->num_rows > 0) {
+                  if ($result) {
                       echo "<div class='alert alert-danger'>Username or email already exists.</div>";
                   } else {
                       // Insert user data into database
-                      $sql = "INSERT INTO m_user (username, email, nama, password, level, nama_lengkap) VALUES (?, ?, ?, ?, ?, ?)";
-                      $stmt = $conn->prepare($sql);
-                      $stmt->bind_param("ssssss", $username, $email, $nama, $password, $level, $namaLengkap);
+                      
 
-                      if ($stmt->execute()) {
+                      if ($Crud->create($username, $email, $nama, $password, $level, $namaLengkap)) {
                           echo "<div class='alert alert-success'>Registration successful!</div>";
                           header("Location: index.php");
                           exit();
@@ -79,13 +71,12 @@
                           echo "<div class='alert alert-danger'>Error: " . $sql . "<br>" . $conn->error . "</div>";
                       }
 
-                      $stmt->close();
                   }
               }
           }
       }
 
-      $conn->close();
+      
       ?>
 
       <form action="" method="post">
