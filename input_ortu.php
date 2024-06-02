@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+?>
+
+<?php
+session_start();
+$_SESSION['survey_id'] = 7; // Atur nilai yang sesuai dengan data di tabel m_survey
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +40,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Informasi User</h1>
+            <h1 class="m-0">Informasi Orangtua</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -40,7 +55,7 @@
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Informasi User</h3>
+                <h3 class="card-title">Informasi Orangtua</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                   </button>
@@ -65,7 +80,7 @@
 
                   <div class="form-group">
                     <label for="Umur">Umur</label>
-                    <input type="email" class="form-control" name="Umur" id="Umur" placeholder="Umur">
+                    <input type="text" class="form-control" name="Umur" id="Umur" placeholder="Umur">
                   </div>
                 
                   <div class="form-group">

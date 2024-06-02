@@ -1,10 +1,9 @@
 <?php
+// Koneksi database
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "projek_akhir";
-
-// Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Periksa koneksi
@@ -12,25 +11,26 @@ if ($conn->connect_error) {
     die("Koneksi Gagal: " . $conn->connect_error);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['user_id'];
-    $username = $_POST['username'];
-    $nama_lengkap = $_POST['nama_lengkap'];
-    $level = $_POST['level'];
+// Ambil data dari request
+$id = $_POST['id'];
+$username = $_POST['username'];
+$nama_lengkap = $_POST['nama_lengkap'];
+$password = $_POST['password'];
+$level = $_POST['level'];
 
-    // Query untuk update data pengguna
-    $stmt = $conn->prepare("UPDATE m_user SET username=?, nama_lengkap=?, level=? WHERE id=$id");
-    $stmt->bind_param("sssi", $username, $nama_lengkap, $level, $id);
+// Buat query untuk update user
+$sql = "UPDATE m_user SET username=?, nama_lengkap=?, password=?, level=? WHERE user_id=?";
 
-    if ($stmt->execute()) {
-        echo "Data berhasil diupdate.";
-    } else {
-        echo "Gagal mengupdate data: " . $stmt->error;
-    }
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssii", $username, $nama_lengkap, $password, $level, $id);
 
-    $stmt->close();
+if ($stmt->execute()) {
+    echo "User berhasil diperbarui.";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 // Tutup koneksi
+$stmt->close();
 $conn->close();
 ?>

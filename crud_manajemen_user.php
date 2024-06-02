@@ -1,4 +1,14 @@
 <?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+?>
+
+<?php
 require_once 'Database.php';
 
 class Crud

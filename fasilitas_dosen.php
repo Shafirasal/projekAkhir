@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,6 +92,9 @@
                                                 if ($conn->connect_error) {
                                                     die("Koneksi Gagal: " . $conn->connect_error);
                                                 }
+                                                
+                                                /// Set id_kategori ke dalam session
+
 
                                                 // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 4
                                                 $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 4";

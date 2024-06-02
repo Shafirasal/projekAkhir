@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+?>
+
+<?php
+session_start();
+$_SESSION['survey_id'] = 5; // Atur nilai yang sesuai dengan data di tabel m_survey
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +40,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Informasi User</h1>
+            <h1 class="m-0">Informasi Dosen</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
           </div><!-- /.col -->
@@ -42,7 +57,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Informasi User</h3>
+                <h3 class="card-title">Informasi Dosen</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                   </button>
@@ -55,22 +70,22 @@
                 <form action="submit_data_dosen.php" method="POST">
                   <div class="form-group">
                     <label for="Tanggal">Tanggal</label>
-                    <input type="date" class="form-control" name="Tanggal" id="Tanggal" placeholder="Tanggal">
+                    <input type="date" class="form-control" name="Tanggal" id="Tanggal" placeholder="Tanggal" required>
                   </div>
                   
                   <div class="form-group">
                     <label for="NIP">NIP</label>
-                    <input type="number" class="form-control" name="NIP" id="NIP" placeholder="NIP">
+                    <input type="number" class="form-control" name="NIP" id="NIP" placeholder="NIP" required>
                   </div>
 
                   <div class="form-group">
                     <label for="Nama">Nama</label>
-                    <input type="text" class="form-control" name="Nama" id="Nama" placeholder="Nama">
+                    <input type="text" class="form-control" name="Nama" id="Nama" placeholder="Nama" required>
                   </div>
 
                   <div class="form-group">
-                    <label for="unit">unit</label>
-                    <input type="text" class="form-control" name="unit" id="unit" placeholder="unit">
+                    <label for="unit">Unit</label>
+                    <input type="text" class="form-control" name="unit" id="unit" placeholder="Unit" required>
                   </div>
 
                   <div class="card-footer">

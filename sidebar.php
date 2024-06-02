@@ -53,20 +53,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="akademik.php" class="nav-link ">
+                <a href="akademik_mahasiswa.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Akademik</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="fasilitas.php" class="nav-link">
+                <a href="fasilitas_mahasiswa.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fasilitas</p>
                 </a>
               </li>
               
               <li class="nav-item">
-                <a href="layanan.php" class="nav-link">
+                <a href="layanan_mahasiswa.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Layanan</p>
                 </a>

@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -33,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">akademik</h1>
+                            <h1 class="m-0">Akademik</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
 
@@ -92,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                             // Tampilkan data dalam tabel HTML
                                             if ($result->num_rows > 0) {
-                                                echo "<form method='post' action='submit_survey.php'>"; // Form untuk submit survey
+                                                echo "<form method='post' action='submit_akademik_mahasiswa.php'>"; // Form untuk submit survey
                                                 echo "<table class='table table-striped'>";
                                                 echo "<thead class='judul-table'>";
                                                 echo "<tr>";

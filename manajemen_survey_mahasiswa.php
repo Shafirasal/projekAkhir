@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -16,6 +18,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="app/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
+    <style>
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a: hover {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -98,9 +112,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     }
 
                                                     $conn->close();
-                                                    ?>
+                                                    ?> 
                                                 </tbody>
                                             </table>
+                                            <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary"><a href="tambah_kategori.php">Tambah kategori</a></button>
+
                                         </div>
                                     
                                 </div>

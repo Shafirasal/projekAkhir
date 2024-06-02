@@ -4,7 +4,7 @@ session_start();
 
 // Koneksi ke database
 $servername = "localhost";
-$username = "username";
+$username = "root";
 $password = "";
 $dbname = "projek_akhir";
 
@@ -14,6 +14,19 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Periksa koneksi
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Periksa apakah survey_id ada dalam sesi
+if (!isset($_SESSION['survey_id'])) {
+    die("survey_id tidak disetel dalam sesi.");
+}
+
+$survey_id = $_SESSION['survey_id'];
+
+// Verifikasi bahwa survey_id ada di tabel m_survey
+$result = $conn->query("SELECT survey_id FROM m_survey WHERE survey_id = $survey_id");
+if ($result->num_rows == 0) {
+    die("survey_id tidak valid.");
 }
 
 // Ambil data dari form
@@ -26,8 +39,8 @@ $nomer = $_POST['Nomer'];
 $kota = $_POST['Kota'];
 
 // Siapkan dan bind
-$stmt = $conn->prepare("INSERT INTO survey_industri (responden_tanggal, responden_nama, responden_jabatan, responden_perusahaan, responden_email, responden_hp, responden_kota) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssss", $tanggal, $nama, $jabatan, $perusahaan, $email, $nomer, $kota);
+$stmt = $conn->prepare("INSERT INTO t_responden_industri (survey_id,responden_tanggal, responden_nama, responden_jabatan, responden_perusahaan, responden_email, responden_hp, responden_kota) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("isssssss", $survey_id, $tanggal, $nama, $jabatan, $perusahaan, $email, $nomer, $kota);
 
 // Eksekusi statement
 if ($stmt->execute()) {

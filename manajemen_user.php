@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -162,33 +172,33 @@
 
     <script>
         function editUser(id) {
-            let username = prompt("Enter new username:");
-            let nama_lengkap = prompt("Enter new nama lengkap:");
-            let password = prompt("Enter new password:");
-            let level = prompt("Enter new level:");
+        let username = prompt("Masukkan username:");
+        let nama_lengkap = prompt("Masukkan nama lengkap:");
+        let password = prompt("Masukkan password baru:");
+        let level = prompt("Masukkan level baru:");
 
-            if (username && nama_lengkap && level && password) {
-                let formData = new FormData();
-                formData.append('id', id);
-                formData.append('username', username);
-                formData.append('nama_lengkap', nama_lengkap);
-                formData.append('level', level);
-                formData.append('password', password);
+        if (username && nama_lengkap && level && password) {
+            let formData = new FormData();
+            formData.append('id', id);
+            formData.append('username', username);
+            formData.append('nama_lengkap', nama_lengkap);
+            formData.append('level', level);
+            formData.append('password', password);
 
-                fetch('edit_user.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        alert(data);
-                        location.reload();
-                    });
-            }
+            fetch('edit_user.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    location.reload();
+                });
         }
+    }
 
         function deleteUser(id) {
-            if (confirm("Are you sure you want to delete this user?")) {
+            if (confirm("Apakah anda yakin ingin menghapus user ini?")) {
                 let formData = new FormData();
                 formData.append('id', id);
 

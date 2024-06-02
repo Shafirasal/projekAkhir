@@ -30,7 +30,7 @@ $Crud = new Crud();
     <div class="card-body">
 
       <?php
-      session_start();
+      // session_start();
 
       // Check if form is submitted
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
