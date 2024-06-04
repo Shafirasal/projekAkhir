@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"]))
+{
+header("location: index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,55 +90,35 @@
                                     $kategoris = $resultKategori->fetch_all(MYSQLI_ASSOC);
                                     ?>
 
-                                    <form action="submit_tambah_soal.php" method="POST">
-                                        <div class="form-group">
-                                            <label for="survey_id">Survey ID</label>
-                                            <select class="form-control" name="survey_id" id="survey_id" required>
-                                                <?php foreach ($surveys as $survey) : ?>
-                                                    <option value="<?= $survey['survey_id'] ?>"><?= $survey['survey_nama'] ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
+<form action="submit_tambah_soal.php" method="POST">
+    <div class="form-group">
+        <label for="survey_id">Pilih Survey</label>
+        <select class="form-control" name="survey_id" id="survey_id" required>
+            <?php foreach ($surveys as $survey) : ?>
+                <option value="<?= htmlspecialchars($survey['survey_id']) ?>"><?= htmlspecialchars($survey['survey_nama']) ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
-                                        <div class="form-group">
-                                            <label for="kategori_id">Kategori ID</label>
-                                            <select class="form-control" name="kategori_id" id="kategori_id" required>
-                                                <?php foreach ($kategoris as $kategori) : ?>
-                                                    <option value="<?= $kategori['kategori_id'] ?>"><?= $kategori['kategori_nama'] ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="soalNama">Pertanyaan</label>
-                                            <input type="text" class="form-control" name="soal_nama" id="soalNama"
-                                                placeholder="Pertanyaan" required>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Tingkat Kepuasan</label>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="tingkat_kepuasan[]" value="1" id="tingkatKepuasan1">
-                                                <label class="form-check-label" for="tingkatKepuasan1">1</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="tingkat_kepuasan[]" value="2" id="tingkatKepuasan2">
-                                                <label class="form-check-label" for="tingkatKepuasan2">2</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="tingkat_kepuasan[]" value="3" id="tingkatKepuasan3">
-                                                <label class="form-check-label" for="tingkatKepuasan3">3</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="tingkat_kepuasan[]" value="4" id="tingkatKepuasan4">
-                                                <label class="form-check-label" for="tingkatKepuasan4">4</label>
-                                            </div>
-                                        </div>
+    <div class="form-group">
+        <label for="kategori_id">Pilih Kategori </label>
+        <select class="form-control" name="kategori_id" id="kategori_id" required>
+            <?php foreach ($kategoris as $kategori) : ?>
+                <option value="<?= htmlspecialchars($kategori['kategori_id']) ?>"><?= htmlspecialchars($kategori['kategori_nama']) ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="soalNama">Pertanyaan</label>
+        <input type="text" class="form-control" name="soal_nama" id="soalNama" placeholder="Pertanyaan" required>
+    </div>
 
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-success">Submit</button>
-                                        </div>
-                                    </form>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>
+
                                 </div>
                                 <!-- /.card-body -->
                             </div>
