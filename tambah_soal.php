@@ -2,9 +2,8 @@
 session_start();
 
 //Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
-if (!isset($_SESSION["nama"]))
-{
-header("location: index.php");
+if (!isset($_SESSION["nama"])) {
+    header("location: index.php");
 }
 ?>
 
@@ -18,7 +17,8 @@ header("location: index.php");
     <title>Survey Kepuasan Pelanggan Polinema</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="app/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -57,7 +57,8 @@ header("location: index.php");
                                 <div class="card-header">
                                     <h3 class="card-title">Tambah Kategori</h3>
                                     <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                                class="fas fa-minus"></i>
                                         </button>
                                     </div>
                                     <!-- /.card-tools -->
@@ -72,10 +73,10 @@ header("location: index.php");
                                     $username = "root";
                                     $password = "";
                                     $dbname = "projek_akhir";
-                                    
+
                                     // Buat koneksi
                                     $conn = new mysqli($servername, $username, $password, $dbname);
-                                    
+
                                     // Periksa koneksi
                                     if ($conn->connect_error) {
                                         die("Koneksi gagal: " . $conn->connect_error);
@@ -90,34 +91,37 @@ header("location: index.php");
                                     $kategoris = $resultKategori->fetch_all(MYSQLI_ASSOC);
                                     ?>
 
-<form action="submit_tambah_soal.php" method="POST">
-    <div class="form-group">
-        <label for="survey_id">Pilih Survey</label>
-        <select class="form-control" name="survey_id" id="survey_id" required>
-            <?php foreach ($surveys as $survey) : ?>
-                <option value="<?= htmlspecialchars($survey['survey_id']) ?>"><?= htmlspecialchars($survey['survey_nama']) ?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
+                                    <form action="submit_tambah_soal.php" method="POST">
+                                        <div class="form-group">
+                                            <label for="survey_id">Pilih Survey</label>
+                                            <select class="form-control" name="survey_id" id="survey_id" required>
+                                                <?php foreach ($surveys as $survey): ?>
+                                                    <option value="<?= htmlspecialchars($survey['survey_id']) ?>">
+                                                        <?= htmlspecialchars($survey['survey_nama']) ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
 
-    <div class="form-group">
-        <label for="kategori_id">Pilih Kategori </label>
-        <select class="form-control" name="kategori_id" id="kategori_id" required>
-            <?php foreach ($kategoris as $kategori) : ?>
-                <option value="<?= htmlspecialchars($kategori['kategori_id']) ?>"><?= htmlspecialchars($kategori['kategori_nama']) ?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <label for="soalNama">Pertanyaan</label>
-        <input type="text" class="form-control" name="soal_nama" id="soalNama" placeholder="Pertanyaan" required>
-    </div>
+                                        <div class="form-group">
+                                            <label for="kategori_id">Pilih Kategori </label>
+                                            <select class="form-control" name="kategori_id" id="kategori_id" required>
+                                                <?php foreach ($kategoris as $kategori): ?>
+                                                    <option value="<?= htmlspecialchars($kategori['kategori_id']) ?>">
+                                                        <?= htmlspecialchars($kategori['kategori_nama']) ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
 
-    <div class="card-footer">
-        <button type="submit" class="btn btn-success">Submit</button>
-    </div>
-</form>
+                                        <div class="form-group">
+                                            <label for="soalNama">Pertanyaan</label>
+                                            <input type="text" class="form-control" name="soal_nama" id="soalNama"
+                                                placeholder="Pertanyaan" required>
+                                        </div>
+
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </form>
 
                                 </div>
                                 <!-- /.card-body -->

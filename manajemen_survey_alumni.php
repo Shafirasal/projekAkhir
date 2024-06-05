@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"])) {
+    header("location: index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +106,7 @@
                                                         echo "<td>" . $no++ . ".</td>";
                                                         echo "<td>" . htmlspecialchars($row['kategori_nama']) . "</td>";
                                                         echo '<td>
-                                                            <a href="tambah_soal.php?kategori_id=' . htmlspecialchars($row['kategori_id']) . '" class="btn btn-success">Tambah Soal</a>
+                                                            <a href="info_soal_kualitas_alumni.php?kategori_id=' . htmlspecialchars($row['kategori_id']) . '" class="btn btn-success">Info Soal</a>
                                                             <button type="button" class="btn btn-danger" onclick="deleteKategori(' . $row['kategori_id'] . ')">Hapus</button>
                                                           </td>';
                                                         echo "</tr>";

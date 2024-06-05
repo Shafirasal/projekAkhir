@@ -77,7 +77,7 @@ require_once 'database.php';
 
         <!-- /.social-auth-links -->
         <p class="mb-1">
-          <a href="forgot-password.php">I forgot my password</a>
+          <a href="forgot_password.php">I forgot my password</a>
         </p>
         <p class="mb-0">
           <a href="register.php" class="text-center">Register a new account</a>
@@ -105,10 +105,10 @@ session_start();
 $servername = "localhost";
 $username_db = "root";
 $password_db = "";
-$database = "projek_akhir";
+$dbname = "projek_akhir";
 
 // Buat koneksi
-$conn = new mysqli($servername, $username_db, $password_db, $database);
+$conn = new mysqli($servername, $username_db, $password_db, $dbname);
 
 // Periksa koneksi
 if ($conn->connect_error) {

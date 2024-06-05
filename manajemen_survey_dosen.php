@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"])) {
+    header("location: index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +17,8 @@
     <title>Survey Kepuasan Pelanggan Polinema</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="app/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -58,7 +69,8 @@
                                     <h3 class="card-title">Kategori Survey Dosen</h3>
 
                                     <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                                class="fas fa-minus"></i></button>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
@@ -74,7 +86,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
+                                                <?php
                                                 // Koneksi database
                                                 $conn = new mysqli('localhost', 'root', '', 'projek_akhir');
 
@@ -83,35 +95,47 @@
                                                     die("Koneksi gagal: " . $conn->connect_error);
                                                 }
 
-                                                // Query SQL untuk mengambil kategori
+                                                // Modified SQL query to select distinct category names
                                                 $sql = "SELECT DISTINCT m_kategori.kategori_id, m_kategori.kategori_nama
-                                                        FROM m_survey_soal 
-                                                        JOIN m_kategori ON m_survey_soal.kategori_id = m_kategori.kategori_id 
-                                                        WHERE m_survey_soal.kategori_id IN (4, 5)";
+                                                FROM m_survey_soal 
+                                                JOIN m_kategori ON m_survey_soal.kategori_id = m_kategori.kategori_id 
+                                                WHERE m_survey_soal.kategori_id IN (4,5)";
                                                 $result = $conn->query($sql);
 
                                                 if ($result->num_rows > 0) {
                                                     $no = 1;
                                                     while ($row = $result->fetch_assoc()) {
+                                                        $infoSoalLink = '#';
+                                                        switch ($row['kategori_nama']) {
+                                                            case 'Fasilitas Dosen':
+                                                                $infoSoalLink = 'info_soal_fasilitas_dosen.php?kategori_id=' . htmlspecialchars($row['kategori_id']);
+                                                                break;
+                                                            case 'Kurikulum Dosen':
+                                                                $infoSoalLink = 'info_soal_kurikulum_dosen.php?kategori_id=' . htmlspecialchars($row['kategori_id']);
+                                                                break;
+                                                            default:
+                                                                $infoSoalLink = '#';
+                                                                break;
+                                                        }
                                                         echo "<tr>";
                                                         echo "<td>" . $no++ . ".</td>";
                                                         echo "<td>" . htmlspecialchars($row['kategori_nama']) . "</td>";
                                                         echo '<td>
-                                                            <a href="tambah_soal.php?kategori_id=' . htmlspecialchars($row['kategori_id']) . '" class="btn btn-success">Tambah Soal</a>
-                                                            <button type="button" class="btn btn-danger" onclick="deleteKategori(' . $row['kategori_id'] . ')">Hapus</button>
-                                                          </td>';
+                                                            <a href="' . $infoSoalLink . '" class="btn btn-success">Info Soal</a>
+                                                            <button type="button" class="btn btn-danger" onclick="deleteKategori(' . htmlspecialchars($row['kategori_id']) . ')">Hapus</button>
+                                                            </td>';
                                                         echo "</tr>";
                                                     }
                                                 } else {
                                                     echo "<tr><td colspan='3'>No data available</td></tr>";
                                                 }
-
                                                 $conn->close();
-                                            ?>
+                                                ?>
                                             </tbody>
                                         </table>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary"><a href="tambah_kategori.php">Tambah kategori</a></button>
+                                            <button type="submit" class="btn btn-primary"><a
+                                                    href="tambah_kategori.php">Tambah kategori</a></button>
                                         </div>
                                     </div>
                                 </div>
@@ -155,11 +179,11 @@
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data);
-                    location.reload();
-                });
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        location.reload();
+                    });
             }
         }
     </script>

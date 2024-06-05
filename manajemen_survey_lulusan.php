@@ -106,7 +106,7 @@ if (!isset($_SESSION["nama"])) {
                                                         echo "<td>" . $no++ . ".</td>";
                                                         echo "<td>" . htmlspecialchars($row['kategori_nama']) . "</td>";
                                                         echo '<td>
-                                                            <a href="tambah_soal.php?kategori_id=' . htmlspecialchars($row['kategori_id']) . '" class="btn btn-success">Tambah Soal</a>
+                                                            <a href="info_soal_kualitas_lulusan.php?kategori_id=' . htmlspecialchars($row['kategori_id']) . '" class="btn btn-success">Info Soal</a>
                                                             <button type="button" class="btn btn-danger">Hapus</button>
                                                           </td>';
                                                         echo "</tr>";

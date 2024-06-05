@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"])) {
+    header("location: index.php");
+}
+?>
 
 
 <!DOCTYPE html>
@@ -97,7 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     }
 
                                                     // Modified SQL query to select distinct category names
-                                                    $sql = "SELECT DISTINCT m_kategori.kategori_nama
+                                                    $sql = "SELECT DISTINCT m_kategori.kategori_id, m_kategori.kategori_nama
                                                             FROM m_survey_soal 
                                                             JOIN m_kategori ON m_survey_soal.kategori_id = m_kategori.kategori_id 
                                                             WHERE m_survey_soal.kategori_id IN (6,7)";
@@ -106,12 +114,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     if ($result->num_rows > 0) {
                                                         $no = 1;
                                                         while ($row = $result->fetch_assoc()) {
+                                                            $infoSoalLink = '#';
+                                                            switch ($row['kategori_nama']) {
+                                                                case 'Layanan Tendik':
+                                                                    $infoSoalLink = 'info_soal_layanan_tendik.php?kategori_id=' . htmlspecialchars($row['kategori_id']);
+                                                                    break;
+                                                                case 'Fasilitas Tendik':
+                                                                    $infoSoalLink = 'info_soal_fasilitas_tendik.php?kategori_id=' . htmlspecialchars($row['kategori_id']);
+                                                                    break;
+                                                                default:
+                                                                    $infoSoalLink = '#';
+                                                                    break;
+                                                            }
                                                             echo "<tr>";
                                                             echo "<td>" . $no++ . ".</td>";
                                                             echo "<td>" . htmlspecialchars($row['kategori_nama']) . "</td>";
                                                             echo '<td>
-                                                                <button type="button" class="btn btn-success">Tambah Soal</button>
-                                                                <button type="button" class="btn btn-danger">hapus</button>
+                                                                <a href="' . $infoSoalLink . '" class="btn btn-success">Info Soal</a>
+                                                                <button type="button" class="btn btn-danger" onclick="deleteKategori(' . htmlspecialchars($row['kategori_id']) . ')">Hapus</button>
                                                               </td>';
                                                             echo "</tr>";
                                                         }

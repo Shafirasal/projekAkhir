@@ -35,7 +35,7 @@ $tahun = $_POST['Tahun'];
 
 // Siapkan dan bind
 $stmt = $conn->prepare("INSERT INTO t_responden_mahasiswa (survey_id, responden_tanggal, responden_nim, responden_nama, responden_prodi, responden_email, responden_hp, tahun_masuk) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("isssssss",$survey_id, $tanggal, $nim, $nama, $prodi, $email, $nomer, $tahun);
+$stmt->bind_param("isssssss", $survey_id, $tanggal, $nim, $nama, $prodi, $email, $nomer, $tahun);
 
 // Eksekusi statement
 if ($stmt->execute()) {
