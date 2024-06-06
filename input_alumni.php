@@ -9,8 +9,8 @@ header("location: index.php");
 ?>
 
 <?php
-session_start();
-$_SESSION['survey_id'] = 6; // Atur nilai yang sesuai dengan data di tabel m_survey
+// Ensure session_start() is at the top before any output
+$_SESSION['survey_id'] = 6; // Set the session variable
 ?>
 
 <!DOCTYPE html>

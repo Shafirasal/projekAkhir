@@ -9,7 +9,6 @@ header("location: index.php");
 ?>
 
 <?php
-session_start();
 $_SESSION['survey_id'] = 7; // Atur nilai yang sesuai dengan data di tabel m_survey
 ?>
 
