@@ -1,11 +1,6 @@
 <?php
-// Connect to the database
-$conn = new mysqli("localhost", "root", "", "projek_akhir");
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+include 'koneksi/koneksi.php';
 
 // Get the form data
 $user_id = $_POST['user_id'];

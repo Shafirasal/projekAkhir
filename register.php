@@ -30,7 +30,8 @@ $Crud = new Crud();
     <div class="card-body">
 
       <?php
-      // session_start();
+      // Variable to store success message
+      $successMessage = '';
 
       // Check if form is submitted
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -39,44 +40,38 @@ $Crud = new Crud();
           $nama = trim($_POST['nama']);
           $password = trim($_POST['password']);
           $level = trim($_POST['user_type']);
-          $namaLengkap = trim($_POST['nama_lengkap']);
           $terms = isset($_POST['terms']) ? $_POST['terms'] : '';
 
-          
-
           // Basic validation
-          if (empty($username) || empty($email) || empty($nama) || empty($password) || empty($level) || empty($namaLengkap) || $terms != 'agree') {
+          if (empty($username) || empty($email) || empty($nama) || empty($password) || empty($level) || $terms != 'agree') {
               echo "<div class='alert alert-danger'>Please fill in all fields and agree to the terms.</div>";
           } else {
               // Check if email is valid
               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                   echo "<div class='alert alert-danger'>Invalid email format</div>";
               } else {
-              
                   // Check if username or email already exists
-                  
                   $result = $Crud->readByUsername($username, $email);
 
                   if ($result) {
                       echo "<div class='alert alert-danger'>Username or email already exists.</div>";
                   } else {
                       // Insert user data into database
-                      
-
-                      if ($Crud->create($username, $email, $nama, $password, $level, $namaLengkap)) {
-                          echo "<div class='alert alert-success'>Registration successful!</div>";
-                          header("Location: index.php");
-                          exit();
+                      if ($Crud->create($username, $email, $nama, $password, $level)) {
+                          $successMessage = "Registration successful!";
+                          echo "<div class='alert alert-success'>$successMessage</div>";
+                          echo "<script>
+                                  setTimeout(function(){
+                                    window.location.href = 'index.php';
+                                  }, 3000);
+                                </script>";
                       } else {
                           echo "<div class='alert alert-danger'>Error: " . $sql . "<br>" . $conn->error . "</div>";
                       }
-
                   }
               }
           }
       }
-
-      
       ?>
 
       <form action="" method="post">
@@ -113,17 +108,8 @@ $Crud = new Crud();
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama_lengkap" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
           <select class="form-select" aria-label="Default select example" name="user_type" required>
-            <option value="" selected disabled>Login Sebagai</option>
-            <option value="Admin">Admin</option>
+            <option selected>Login Sebagai</option>
             <option value="Dosen">Dosen</option>
             <option value="Tendik">Tendik</option>
             <option value="Mahasiswa">Mahasiswa</option>
@@ -141,11 +127,9 @@ $Crud = new Crud();
               </label>
             </div>
           </div>
-          <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Register</button>
           </div>
-          <!-- /.col -->
         </div>
       </form>
 
@@ -153,10 +137,8 @@ $Crud = new Crud();
         <a href="index.php" class="text-center">Already have an account</a>
       </p>
     </div>
-    <!-- /.form-box -->
-  </div><!-- /.card -->
+  </div>
 </div>
-<!-- /.register-box -->
 
 <!-- jQuery -->
 <script src="app/plugins/jquery/jquery.min.js"></script>

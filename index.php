@@ -1,11 +1,84 @@
 <?php
+session_start();
 require_once 'config.php';
 require_once 'database.php';
+require_once 'koneksi/koneksi.php'; // Ensure this includes the database connection
+
+// Initialize error message
+$errorMessage = '';
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+    $user_status = isset($_POST['user_type']) ? $_POST['user_type'] : '';
+
+    if (empty($username) || empty($password) || empty($user_status)) {
+        $errorMessage = 'Tolong isi semua kolom.';
+    } else {
+        $user_status = str_replace('-', ' ', $user_status);
+
+        // Protect against SQL Injection
+        $username = mysqli_real_escape_string($conn, $username);
+        $password = mysqli_real_escape_string($conn, $password);
+        $user_status = mysqli_real_escape_string($conn, $user_status);
+
+        // Find the user in the database
+        $sql = "SELECT * FROM m_user WHERE username = '$username' AND level = '$user_status'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+
+            // Check if the password matches
+            if ($password === $row['password']) {
+                // Successful login
+                $_SESSION['username'] = $username;
+                $_SESSION['user_type'] = $user_status;
+                $_SESSION['nama'] = $row['nama'];
+                $_SESSION['user_id'] = $row['user_id'];
+
+                switch ($user_status) {
+                    case 'Mahasiswa':
+                        header("Location: dashboard.php");
+                        break;
+                    case 'Dosen':
+                        header("Location: dashboard_dosen.php");
+                        break;
+                    case 'Admin':
+                        header("Location: Admin/adminDash.php");
+                        break;
+                    case 'Ortu':
+                        header("Location: dashboard_ortu.php");
+                        break;
+                    case 'Alumni':
+                        header("Location: dashboard_alumni.php");
+                        break;
+                    case 'Industri':
+                        header("Location: dashboard_industri.php");
+                        break;
+                    case 'Tendik':
+                        header("Location: dashboard_tendik.php");
+                        break;
+                    default:
+                        $errorMessage = 'User type not found';
+                        break;
+                }
+                exit();
+            } else {
+                // Incorrect password
+                $errorMessage = 'Wrong password';
+            }
+        } else {
+            // User not found
+            $errorMessage = 'User not found';
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +105,10 @@ require_once 'database.php';
         <h5><b>survey kepuasan pelanggan polinema</b></h5>
       </div>
       <div class="card-body">
+
+        <?php if ($errorMessage): ?>
+          <div class="alert alert-danger"><?php echo $errorMessage; ?></div>
+        <?php endif; ?>
 
         <form method="post">
           <div class="input-group mb-3">
@@ -64,7 +141,6 @@ require_once 'database.php';
                   <option value="Ortu">Ortu</option>
                   <option value="Industri">Industri</option>
                 </select>
-
               </div>
             </div>
             <!-- /.col -->
@@ -75,10 +151,6 @@ require_once 'database.php';
           </div>
         </form>
 
-        <!-- /.social-auth-links -->
-        <p class="mb-1">
-          <a href="forgot_password.php">I forgot my password</a>
-        </p>
         <p class="mb-0">
           <a href="register.php" class="text-center">Register a new account</a>
         </p>
@@ -95,101 +167,11 @@ require_once 'database.php';
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
   <!-- AdminLTE App -->
-  <script src="app/dist/js/adminlte.mi.js"></script>
+  <script src="app/dist/js/adminlte.min.js"></script>
 </body>
-
 </html>
-
 <?php
-session_start();
-$servername = "localhost";
-$username_db = "root";
-$password_db = "";
-$dbname = "projek_akhir";
-
-// Buat koneksi
-$conn = new mysqli($servername, $username_db, $password_db, $dbname);
-
-// Periksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if (isset($conn)) {
+    $conn->close();
 }
-
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Mendapatkan data yang dikirimkan dari JavaScript
-    $username = isset($_POST['username']) ? $_POST['username'] : '';
-    $password = isset($_POST['password']) ? $_POST['password'] : '';
-    $user_status = isset($_POST['user_type']) ? $_POST['user_type'] : '';
-
-    if(empty($username) || empty($password) || empty($user_status)) {
-        echo "Please fill in all fields.";
-        exit;
-    }
-
-    $user_status = str_replace('-', ' ', $user_status);
-
-    // Melindungi dari SQL Injection
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
-    $user_status = mysqli_real_escape_string($conn, $user_status);
-
-    // Mencari pengguna dengan username tertentu di database
-    $sql = "SELECT * FROM m_user WHERE username = '$username' AND level = '$user_status'";
-    $result = $conn->query($sql);
-
-    // Periksa apakah username dan password cocok
-    if ($result->num_rows > 0) {
-        // Pengguna ditemukan, ambil data dari database
-        $row = $result->fetch_assoc();
-        
-        // Periksa apakah password yang dimasukkan sesuai dengan password di database
-        if ($password === $row['password']) {
-            // Password cocok, login berhasil
-
-            // Check if the user belongs to the correct user type
-            session_start(); // Memulai sesi
-            $_SESSION['username'] = $username; // Simpan username ke sesi
-            $_SESSION['user_type'] = $user_status; // Simpan user_status ke sesi
-            $_SESSION['nama'] = $row['nama']; // simpan nama user ke sesi
-            $_SESSION['user_id'] = $row['user_id']; // simpan user_id ke sesi
-            
-            switch ($user_status) {
-                case 'Mahasiswa':
-                    header("Location: dashboard.php");
-                    break;
-                case 'Dosen':
-                    header("Location: dashboard_dosen.php");
-                    break;
-                case 'Admin':
-                    header("Location: adminDash.php");
-                    break;
-                case 'Ortu':
-                    header("Location: dashboard_ortu.php");
-                    break;
-                case 'Alumni':
-                    header("Location: dashboard_alumni.php");
-                    break;
-                case 'Industri':
-                    header("Location: dashboard_industri.php");
-                    break;
-                case 'Tendik':
-                    header("Location: dashboard_tendik.php");
-                    break;
-                default:
-                    echo "user_not_found";
-                    break;
-            }
-            exit();
-        } else {
-            // Password salah
-            echo "wrong_password";
-        }
-    } else {
-        // Pengguna tidak ditemukan
-        echo "user_not_found";
-    }
-}
-
-$conn->close();
 ?>

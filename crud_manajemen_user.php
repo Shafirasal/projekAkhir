@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-//Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
-if (!isset($_SESSION["nama"]))
-{
-header("location: index.php");
+// Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
+if (!isset($_SESSION["nama"])) {
+    header("location: ../index.php");
+    exit();
 }
 ?>
 
 <?php
-require_once 'Database.php';
+require_once 'database.php';
 
 class Crud
 {
@@ -21,9 +21,9 @@ class Crud
     }
 
     // Create
-    public function create($username, $email, $nama, $password, $level, $nama_lengkap)
+    public function create($username, $email, $nama, $password, $level)
     {
-        $query = "INSERT INTO m_user (username, email, nama, password, level, nama_lengkap) VALUES ('$username', '$email','$nama', '$password', '$level', '$nama_lengkap')";
+        $query = "INSERT INTO m_user (username, email, nama, password, level) VALUES ('$username', '$email','$nama', '$password', '$level')";
         return $this->db->conn->query($query);
     }
 
@@ -55,10 +55,10 @@ class Crud
         }
     }
 
-    // Read By Id
+    // Read By Username or Email
     public function readByUsername($username, $email)
     {
-        $query = "SELECT * FROM m_user WHERE username = '$username' or email = '$email'";
+        $query = "SELECT * FROM m_user WHERE username = '$username' OR email = '$email'";
         $result = $this->db->conn->query($query);
         if ($result->num_rows == 1) {
             return $result->fetch_assoc();
@@ -67,13 +67,10 @@ class Crud
         }
     }
 
-    
-
-
     // Update
-    public function update($id, $username, $nama_lengkap, $password, $level)
+    public function update($id, $username, $password, $level)
     {
-        $query = "UPDATE m_user SET username = '$username', nama_lengkap = '$nama_lengkap', password = '$password', level = '$level' WHERE user_id = $id";
+        $query = "UPDATE m_user SET username = '$username', password = '$password', level = '$level' WHERE user_id = $id";
         return $this->db->conn->query($query);
     }
 

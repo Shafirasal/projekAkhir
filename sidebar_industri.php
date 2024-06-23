@@ -14,7 +14,7 @@
           <img src="app/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <p class = "d-block text-white"><b><?= $_SESSION['nama'] ?></b></p> 
+        <p class = "d-block text-white"><b><?= $_SESSION['username'] ?></b></p> 
         </div>
       </div>
 
@@ -25,7 +25,7 @@
                with font-awesome or any other icon font library -->
          
           <li class="nav-item">
-            <a href="adminDash.php" class="nav-link">
+            <a href="dashboard_industri.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home

@@ -14,7 +14,7 @@
           <img src="app/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <p class = "d-block text-white"><b><?= $_SESSION['nama'] ?></b></p> 
+        <p class = "d-block text-white"><b><?= $_SESSION['username'] ?></b></p> 
           </div>
         </div>
       

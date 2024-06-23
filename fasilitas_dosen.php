@@ -2,9 +2,8 @@
 session_start();
 
 //Pengecekan dia itu udah login apa nggak, klo blum balik ke index.php
-if (!isset($_SESSION["nama"]))
-{
-header("location: index.php");
+if (!isset($_SESSION["nama"])) {
+    header("location: index.php");
 }
 ?>
 
@@ -79,22 +78,12 @@ header("location: index.php");
                                             <tbody>
 
                                                 <?php
-                                                // Koneksi ke database
-                                                $servername = "localhost";
-                                                $username = "root";
-                                                $password = "";
-                                                $dbname = "projek_akhir";
 
-                                                // Buat koneksi
-                                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                                include 'koneksi/koneksi.php';
 
-                                                // Periksa koneksi
-                                                if ($conn->connect_error) {
-                                                    die("Koneksi Gagal: " . $conn->connect_error);
-                                                }
-                                                
+
                                                 /// Set id_kategori ke dalam session
-
+                                                
 
                                                 // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 4
                                                 $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 4";
@@ -160,4 +149,4 @@ header("location: index.php");
             <div class="p-3">
                 <h5>Title</h5>
                 <p>Sidebar content</p>
-            </
+                </

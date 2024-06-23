@@ -82,19 +82,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <tbody>
 
                                             <?php
-                                            // Koneksi ke database
-                                            $servername = "localhost";
-                                            $username = "root";
-                                            $password = "";
-                                            $dbname = "projek_akhir";
-
-                                            // Buat koneksi
-                                            $conn = new mysqli($servername, $username, $password, $dbname);
-
-                                            // Periksa koneksi
-                                            if ($conn->connect_error) {
-                                                die("Koneksi Gagal: " . $conn->connect_error);
-                                            }
+                                            
+                                            include 'koneksi/koneksi.php';
 
                                             // Query untuk mengambil data dari tabel m_survey_soal dengan kategori_id 1
                                             $sql = "SELECT * FROM m_survey_soal WHERE kategori_id = 7";
